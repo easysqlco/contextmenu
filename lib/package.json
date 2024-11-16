@@ -1,0 +1,36 @@
+{
+  "name": "@easysqlco/contextmenu",
+  "version": "0.0.1",
+  "description": "Simple react context menu implementation",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "author": "easysqlco",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/easysqlco/contextmenu.git"
+  },
+  "homepage": "https://github.com/easysqlco/contextmenu#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "rimraf dist && tsc && npm run copy-files",
+    "copy-files": "copyfiles -f src/**/*.css dist/css/",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.2",
+    "@testing-library/react": "^16.0.1",
+    "@types/jest": "^29.5.13", 
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "ts-jest": "^29.2.5"
+  }
+}
