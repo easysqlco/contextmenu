@@ -1,6 +1,11 @@
 import { useEffect, useState } from 'react';
+import invariant from 'tiny-invariant';
+import { useClickAnyWhere } from 'usehooks-ts';
 
 export * from './contextmenu';
+export * from './contextmenu-item';
+
+import './css/contextmenu.css';
 
 export const useContextMenu = (targetRef: React.RefObject<HTMLElement>) => {
   const [open, setOpen] = useState(false);
@@ -12,14 +17,9 @@ export const useContextMenu = (targetRef: React.RefObject<HTMLElement>) => {
     setOpen(true);
   };
 
-  const handleMenuItemClick = (event: MouseEvent) => {
-    event.preventDefault();
-    setOpen(false);
-  };
-
   useEffect(() => {
     const target = targetRef.current;
-    if (!target) return;
+    invariant(target, 'Contextmenu target ref is not defined');
 
     target.addEventListener('contextmenu', handleContextMenu);
 
@@ -27,6 +27,10 @@ export const useContextMenu = (targetRef: React.RefObject<HTMLElement>) => {
       target.removeEventListener('contextmenu', handleContextMenu);
     };
   }, [targetRef]);
+
+  useClickAnyWhere(() => {
+    setOpen(false);
+  });
 
   return {
     open,
