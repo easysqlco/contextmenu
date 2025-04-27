@@ -7,12 +7,12 @@ export interface Position {
 
 export interface ContextMenuProps {
   children: React.ReactNode;
-  open: boolean;
+  isOpen: boolean;
   position: Position;
 }
 
-export const ContextMenu = ({ children, open, position }: ContextMenuProps) => {
-  if (!open) return <></>;
+export const ContextMenu = ({ children, isOpen, position }: ContextMenuProps) => {
+  if (!isOpen) return <></>;
 
   return (
     <ul className="contextmenu" role="menu" style={{ top: position.y, left: position.x }}>

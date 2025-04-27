@@ -6,7 +6,7 @@ import '../node_modules/font-awesome/css/font-awesome.min.css';
 
 const App = () => {
   const targetRef = useRef<HTMLDivElement | null>(null);
-  const { open, position } = useContextMenu(targetRef);
+  const { isOpen, position } = useContextMenu(targetRef);
 
   return (
     <div className="app">
@@ -17,7 +17,7 @@ const App = () => {
         <span>Right-click here!</span>
       </div>
 
-      <ContextMenu open={open} position={position}>
+      <ContextMenu isOpen={isOpen} position={position}>
         <ContextMenuItem label="Menu Item 1" icon="external-link" onClick={() => {console.log('Menu Item 1 clicked')}}/>
         <ContextMenuItem label="Menu Item 2" icon="pencil-square-o" onClick={() => {console.log('Menu Item 2 clicked')}}/>
         <ContextMenuItem label="Menu Item 3" onClick={() => {console.log('Menu Item 3 clicked')}}/>

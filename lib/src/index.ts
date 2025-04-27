@@ -7,33 +7,46 @@ export * from './contextmenu-item';
 
 import './css/contextmenu.css';
 
-export const useContextMenu = (targetRef: React.RefObject<HTMLElement>) => {
-  const [open, setOpen] = useState(false);
+export const useContextMenu = <T>(targetRef?: React.RefObject<HTMLElement>) => {
+  const [isOpen, setIsOpen] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
-
-  const handleContextMenu = (event: MouseEvent) => {
-    event.preventDefault();
-    setPosition({ x: event.pageX, y: event.pageY });
-    setOpen(true);
-  };
+  const [target, setTarget] = useState<T | null>(null);
 
   useEffect(() => {
-    const target = targetRef.current;
-    invariant(target, 'Contextmenu target ref is not defined');
+    if (!targetRef) {
+      return;
+    }
 
-    target.addEventListener('contextmenu', handleContextMenu);
+    const handleContextMenu = (event: MouseEvent) => {
+      event.preventDefault();
+      setPosition({ x: event.pageX, y: event.pageY });
+      setIsOpen(true);
+    };
+
+    const targetEl = targetRef.current;
+    invariant(targetEl, 'Contextmenu target ref is not defined');
+
+    targetEl.addEventListener('contextmenu', handleContextMenu);
 
     return () => {
-      target.removeEventListener('contextmenu', handleContextMenu);
+      targetEl.removeEventListener('contextmenu', handleContextMenu);
     };
   }, [targetRef]);
 
   useClickAnyWhere(() => {
-    setOpen(false);
+    setIsOpen(false);
+    setTarget(null);
   });
 
   return {
-    open,
+    isOpen,
     position,
+    target,
+    open: (event: React.MouseEvent, target: T | null) => {
+      event.preventDefault();
+      setIsOpen(true);
+      setTarget(target);
+      setPosition({ x: event.pageX, y: event.pageY });
+    },
   };
 };
