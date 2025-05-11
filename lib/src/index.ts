@@ -42,7 +42,7 @@ export const useContextMenu = <T>(targetRef?: React.RefObject<HTMLElement>) => {
     isOpen,
     position,
     target,
-    open: (event: React.MouseEvent, target: T | null) => {
+    open: (event: React.MouseEvent, target: T | null = null) => {
       event.preventDefault();
       setIsOpen(true);
       setTarget(target);
