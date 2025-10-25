@@ -4,8 +4,7 @@ import { useClickAnyWhere } from 'usehooks-ts';
 
 export * from './contextmenu';
 export * from './contextmenu-item';
-
-import './css/contextmenu.css';
+export * from './contextmenu-separator';
 
 export const useContextMenu = <T>(targetRef?: React.RefObject<HTMLElement>) => {
   const [isOpen, setIsOpen] = useState(false);

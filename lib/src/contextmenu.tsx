@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'clsx';
 
 export interface Position {
   x: number;
@@ -9,13 +10,14 @@ export interface ContextMenuProps {
   children: React.ReactNode;
   isOpen: boolean;
   position: Position;
+  size?: 'compact' | 'normal';
 }
 
-export const ContextMenu = ({ children, isOpen, position }: ContextMenuProps) => {
+export const ContextMenu = ({ children, isOpen, position, size }: ContextMenuProps) => {
   if (!isOpen) return <></>;
 
   return (
-    <ul className="contextmenu" role="menu" style={{ top: position.y, left: position.x }}>
+    <ul className={cx('contextmenu', size)} role="menu" style={{ top: position.y, left: position.x }}>
       {children}
     </ul>
   );
