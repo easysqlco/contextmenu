@@ -1,21 +1,7 @@
 {
+  "extends": "@easysqlco/tsconfig/react",
   "compilerOptions": {
-    "target": "ESNext",
-    "useDefineForClassFields": true,
-    "lib": ["ESNext", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
-    "outDir": "dist",
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "moduleResolution": "bundler",
-    "isolatedModules": true,
-    "moduleDetection": "force",
-    "jsx": "react-jsx",
-    "strict": true,
-    "esModuleInterop": true,
-    "noFallthroughCasesInSwitch": true,
+    "outDir": "dist"
   },
   "files": ["src/index.ts"],
 }

@@ -1,46 +1,49 @@
 ul.contextmenu {
-    position: absolute;
-    list-style: none;
-    z-index: 1000;
-    margin: 0;
-    padding: 0;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  list-style: none;
+  z-index: 1000;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 
-    & li.contextmenu-item {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        padding: 6px 10px;
-        cursor: pointer;
-        font-size: 12px;
-        color: #333;
-        min-width: 150px;
-        gap: 6px;
+  & li.contextmenu-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #333;
+    min-width: 150px;
+    gap: 6px;
 
-        & .menuitem-text { flex: 1; }
+    & .menuitem-text {
+      flex: 1;
     }
+  }
 
-    & li.contextmenu-item:has(.menuitem-icon.right) {
-        flex-direction: row-reverse;
-    }
+  & li.contextmenu-item:has(.menuitem-icon.right) {
+    flex-direction: row-reverse;
+  }
 
-    & li.contextmenu-separator {
-        height: 1px;
-        margin: 2px 0;
-        background-color: #e0e0e0;
-    }
+  & li.contextmenu-separator {
+    height: 1px;
+    margin: 2px 0;
+    background-color: #e0e0e0;
+  }
 
-    & li:hover {
-        background-color: #f0f0f0; /* TODO: use common vars! */
-    }
+  & li:hover {
+    background-color: #f0f0f0;
+    /* TODO: use common vars! */
+  }
 }
 
 ul.contextmenu.compact {
-    & li.contextmenu-item {
-        gap: 4px;
-        padding: 4px 8px;
-        min-width: 100px;
-    }
+  & li.contextmenu-item {
+    gap: 4px;
+    padding: 4px 8px;
+    min-width: 100px;
+  }
 }

@@ -1,6 +1,6 @@
 {
+  "extends": "@easysqlco/tsconfig/dev",
   "compilerOptions": {
-    "baseUrl": ".",
-    "skipLibCheck": true,
+    "noEmit": true
   }
 }

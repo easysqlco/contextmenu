@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
-import invariant from 'tiny-invariant';
-import { useClickAnyWhere } from 'usehooks-ts';
+import { useEffect, useState } from "react";
+import invariant from "tiny-invariant";
+import { useClickAnyWhere } from "usehooks-ts";
 
-export * from './contextmenu';
-export * from './contextmenu-item';
-export * from './contextmenu-separator';
+export * from "./contextmenu";
+export * from "./contextmenu-item";
+export * from "./contextmenu-separator";
 
 export const useContextMenu = <T>(targetRef?: React.RefObject<HTMLElement>) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,12 +23,12 @@ export const useContextMenu = <T>(targetRef?: React.RefObject<HTMLElement>) => {
     };
 
     const targetEl = targetRef.current;
-    invariant(targetEl, 'Contextmenu target ref is not defined');
+    invariant(targetEl, "Contextmenu target ref is not defined");
 
-    targetEl.addEventListener('contextmenu', handleContextMenu);
+    targetEl.addEventListener("contextmenu", handleContextMenu);
 
     return () => {
-      targetEl.removeEventListener('contextmenu', handleContextMenu);
+      targetEl.removeEventListener("contextmenu", handleContextMenu);
     };
   }, [targetRef]);
 
