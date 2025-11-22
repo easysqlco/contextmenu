@@ -11,8 +11,9 @@
     "start:example": "cd example && npm run dev"
   },
   "devDependencies": {
-    "@easysql/eslint-config": "^0.0.8",
-    "@easysql/eslint-config-react": "^0.0.1",
+    "@easysql/eslint-config": "^0.0.22",
+    "@easysql/eslint-config-react": "^0.0.3",
+    "@easysqlco/tsconfig": "^0.0.3",
     "@types/react": "^18.3.11",
     "@types/react-dom": "18.3.1",
     "copyfiles": "^2.4.1",
