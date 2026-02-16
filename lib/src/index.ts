@@ -9,7 +9,7 @@ export * from "./contextmenu-separator";
 export const useContextMenu = <T>(targetRef?: React.RefObject<HTMLElement>) => {
   const [isOpen, setIsOpen] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [target, setTarget] = useState<T | null>(null);
+  const [target, setTarget] = useState<T | T[] | null>(null);
 
   useEffect(() => {
     if (!targetRef) {
@@ -41,10 +41,10 @@ export const useContextMenu = <T>(targetRef?: React.RefObject<HTMLElement>) => {
     isOpen,
     position,
     target,
-    open: (event: React.MouseEvent, target: T | null = null) => {
+    open: (event: React.MouseEvent, nextTarget?: T | T[]) => {
       event.preventDefault();
       setIsOpen(true);
-      setTarget(target);
+      setTarget(nextTarget ?? null);
       setPosition({ x: event.pageX, y: event.pageY });
     },
   };

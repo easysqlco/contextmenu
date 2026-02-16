@@ -16,8 +16,16 @@ export const ContextMenuItem = ({
   icon,
   iconPosition,
 }: ContextMenuItemProps) => {
+  const handleClick = (event: React.MouseEvent) => {
+    if (disabled) {
+      event.preventDefault();
+      return;
+    }
+    onClick(event);
+  };
+
   return (
-    <li role="menuitem" className="contextmenu-item" onClick={onClick}>
+    <li role="menuitem" className="contextmenu-item" onClick={handleClick}>
       {icon && (
         <i
           className={cx(
